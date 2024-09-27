@@ -24,9 +24,6 @@
           <li class="nav-item">
             <a class="nav-link" href="#">KARIER</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">KONTAK</a>
-          </li>
         </ul>
       </div>
     </div>
