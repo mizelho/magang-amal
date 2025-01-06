@@ -5,14 +5,14 @@ include '../koneksi/koneksi.php';
 $username = $_POST['username'];
 $password = $_POST['pass'];
 
-$cek = mysqli_query($conn, "SELECT * FROM customer where username = '$username'");
+$cek = mysqli_query($conn, "SELECT * FROM pelamar where username = '$username'");
 $jml = mysqli_num_rows($cek);
 $row = mysqli_fetch_assoc($cek);
 
 if ($jml == 1) {
 	if (password_verify($password, $row['password'])) {
 		$_SESSION['user'] = $row['nama'];
-		$_SESSION['kd_cs'] = $row['kode_customer'];
+		$_SESSION['kd_pm'] = $row['kode_pelamar'];
 		header('location:../index.php');
 	} else {
 		echo "

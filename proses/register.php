@@ -1,17 +1,17 @@
 <?php
 include '../koneksi/koneksi.php';
-$kode = mysqli_query($conn, "SELECT kode_customer from customer order by kode_customer desc");
+$kode = mysqli_query($conn, "SELECT kode_pelamar from pelamar order by kode_pelamar desc");
 $data = mysqli_fetch_assoc($kode);
-$num = substr($data['kode_customer'], 1, 4);
+$num = substr($data['kode_pelamar'], 1, 4);
 $add = (int) $num + 1;
 if (strlen($add) == 1) {
-	$format = "C000" . $add;
+	$format = "P000" . $add;
 } else if (strlen($add) == 2) {
-	$format = "C00" . $add;
+	$format = "P00" . $add;
 } else if (strlen($add) == 3) {
-	$format = "C0" . $add;
+	$format = "P0" . $add;
 } else {
-	$format = "C" . $add;
+	$format = "P" . $add;
 }
 
 $nama = $_POST['nama'];
@@ -25,7 +25,7 @@ $konfirmasi = $_POST['konfirmasi'];
 $hash = password_hash($password, PASSWORD_DEFAULT);
 
 if ($password == $konfirmasi) {
-	$cek = mysqli_query($conn, "SELECT username from customer where username = '$username'");;
+	$cek = mysqli_query($conn, "SELECT username from pelamar where username = '$username'");;
 	$jml = mysqli_num_rows($cek);
 
 	if ($jml == 1) {
@@ -38,7 +38,7 @@ if ($password == $konfirmasi) {
 		die;
 	}
 
-	$result = mysqli_query($conn, "INSERT INTO customer VALUES('$format','$nama', '$email', '$username', '$hash')");
+	$result = mysqli_query($conn, "INSERT INTO pelamar VALUES('$format','$nama', '$email', '$username', '$hash')");
 	if ($result) {
 		echo "
 		<script>

@@ -9,13 +9,13 @@ if (!isset($_SESSION['admin'])) {
 <?php
 if (isset($_GET['page'])) {
 	$kode = $_GET['kode'];
-	$result = mysqli_query($conn, "DELETE FROM customer WHERE kode_customer = '$kode'");
+	$result = mysqli_query($conn, "DELETE FROM pelamar WHERE kode_pelamar = '$kode'");
 
 	if ($result) {
 		echo "
 		<script>
 		alert('DATA BERHASIL DIHAPUS');
-		window.location = 'm_customer.php';
+		window.location = 'm_pelamar.php';
 		</script>
 		";
 	}
@@ -32,7 +32,7 @@ if (isset($_GET['page'])) {
 	<link rel="stylesheet" type="text/css" href="../style/main.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-	<title>Data Pembeli</title>
+	<title>Data pelamar</title>
 </head>
 
 <body>

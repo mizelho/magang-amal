@@ -28,25 +28,60 @@
         }
 
         footer {
-            margin-top: 50px;
+            background-color: #222;
+            color: #fff;
+            padding: 40px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+        }
+
+        .footer-content .footer-brand h1 {
+            font-size: 1.75rem;
+            color: #d1d1d1;
+        }
+
+        .footer-content .footer-item h3 {
+            font-size: 1.25rem;
+            color: #fff;
+        }
+
+        .footer-content .footer-item p {
+            margin: 5px 0;
+            color: #bbb;
+        }
+
+        .footer-content .footer-item a {
+            color: #d1d1d1;
+            text-decoration: none;
+        }
+
+        .footer-content .footer-item a:hover {
+            color: #a6a6a6;
         }
     </style>
 </head>
 
 <body>
     <header>
-        <nav class="main-nav">
-            <div class="brand text-main">
-                <a href="index.php">
-                    <h1>Amal Solution</h1>
-                </a>
-            </div>
+    <nav class="main-nav">
+        <div class="brand text-main" style="display: flex; align-items: center;">
+            <!-- Logo -->
+            <img src="assets/images/logo.png" alt="Logo" style="width: 50px; height: auto; margin-right: 10px;">
+            <!-- Nama Perusahaan -->
+            <a href="index.php">
+                <h1>Amal Solution</h1>
+            </a>
+        </div>
             <div class="links">
                 <ul>
                     <li><a href="index.php">Menu</a></li>
-                    <li><a href="produk.php">Produk</a></li>
                     <li><a href="karier.php">Karier</a></li>
-                    <li class="active"><a href="contact.php">Kontak</a></li>
+                    <li class="active"><a href="contact.php">contact</a></li>
                 </ul>
             </div>
         </nav>

@@ -1,4 +1,10 @@
-
+<?php
+session_start();
+include 'koneksi/koneksi.php';
+if (isset($_SESSION['kd_pm'])) {
+  $kode_cs = $_SESSION['kd_pm'];
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,25 +20,23 @@
 
 <body>
   <header>
-    <nav class="main-nav">
-      <div class="brand text-main">
-        <a href="index.php">
-          <h1>Amal Solution</h1>
-        </a>
-      </div>
+  <nav class="main-nav">
+        <div class="brand text-main" style="display: flex; align-items: center;">
+            <!-- Logo -->
+            <img src="assets/images/logo.png" alt="Logo" style="width: 50px; height: auto; margin-right: 10px;">
+            <!-- Nama Perusahaan -->
+            <a href="index.php">
+                <h1>Amal Solution</h1>
+            </a>
+        </div>
       <div class="links">
         <ul>
           <li><a href="index.php">Menu</a></li>
-          <li><a href="produk.php">Produk</a></li>
+          <li><a href="lamar.php">Lamar</a></li>
         </ul>
       </div>
       <div class="icon-for-user">
-        <a href="keranjang.php" style="padding-right: 40px;">
-          <img src="assets/icons/shop-bag.png">
-        </a>
-        <a href="#">
-          <img src="assets/icons/person.png">
-        </a>
+        <a href="#"></a>
         <?php
         if (!isset($_SESSION['user'])) {
         ?>
@@ -110,6 +114,7 @@
     </div>
   </main>
 
+
   <footer>
     <div class="container">
       <div class="footer-content">
@@ -124,7 +129,7 @@
             <h3 class="text-main">Bisnis</h3>
             <p><a href="#">amalsolution@gmail.com</a></p>
             <p><a href="#">081219613083</a></p>
-            <p><a href="#">Bandung,jawa barat</a></p>
+            <p><a href="#">Bandung, Jawa Barat</a></p>
           </div>
         </div>
       </div>
