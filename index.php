@@ -2,7 +2,7 @@
 session_start();
 include 'koneksi/koneksi.php';
 if (isset($_SESSION['kd_cm'])) {
-	$kode_cs = $_SESSION['kd_cm'];
+    $kode_cs = $_SESSION['kd_cm'];
 }
 ?>
 
@@ -10,17 +10,45 @@ if (isset($_SESSION['kd_cm'])) {
 <html lang="en">
 
 <head>
-<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="style/main.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <title>Amal Solution</title>
     <style>
-         footer {
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        .main-nav .links ul {
+            display: flex;
+            gap: 15px;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-nav .links ul .nav-item {
+            font-size: 1rem;
+        }
+
+        .main-nav .profile-icon img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+
+        .main-nav .profile-icon a {
+            margin-left: 15px;
+        }
+
+        footer {
             background-color: #222;
             color: #fff;
             padding: 40px 0;
@@ -56,40 +84,46 @@ if (isset($_SESSION['kd_cm'])) {
         .footer-content .footer-item a:hover {
             color: #a6a6a6;
         }
+        .amal-text{
+            color: black !important; 
+            text-decoration: none !important;
+        }
     </style>
-
 </head>
 
 <body>
 
     <header>
-    <nav class="main-nav">
-        <div class="brand text-main" style="display: flex; align-items: center;">
-            <!-- Logo -->
-            <img src="assets/images/logo.png" alt="Logo" style="width: 50px; height: auto; margin-right: 10px;">
-            <!-- Nama Perusahaan -->
-            <a href="index.php">
-                <h1 class="">Amal Solution</h1>
-            </a>
-        </div>
+        <nav class="main-nav d-flex justify-content-between align-items-center p-3 bg-light">
+            <!-- Brand Logo and Name -->
+            <div class="brand text-main d-flex align-items-center">
+                <img src="assets/images/logo.png" alt="Logo" style="width: 50px; height: auto; margin-right: 10px;">
+                <a href="index.php">
+                    <h3 class="m-0 amal-text">Amal Solution</h3>
+                </a>
+            </div>
+
+            <!-- Navigation Links -->
             <div class="links">
-                <ul>
-                    <li class="active"><a href="index.php">Home</a></li>
-                    <li><a href="media.php">Media</a></li>
-                    <li><a href="karier.php">Karier</a></li>
-                    <li><a href="contact.php">Contact</a></li>
-                    <li><a href="#tentangkami">Tentang Kami</a></li>
+                <ul class="d-flex m-0 p-0">
+                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="media.php">Media</a></li>
+                    <li class="nav-item"><a class="nav-link" href="karier.php">Karier</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tentangkami">Tentang Kami</a></li>
                 </ul>
             </div>
 
+            <!-- Profile Icon and Login/Logout Dropdown -->
+            <div class="profile-icon">
                 <a href="#">
-                    <img src="assets/icons/person.png">
+                    <img src="assets/icons/person.png" alt="Profile" style="width: 30px; height: 30px; border-radius: 50%;">
                 </a>
+                
                 <?php
                 if (!isset($_SESSION['user'])) {
                 ?>
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    </a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="user_login.php">Login</a>
                         <a class="dropdown-item" href="register.php">Register</a>
@@ -97,8 +131,7 @@ if (isset($_SESSION['kd_cm'])) {
                 <?php
                 } else {
                 ?>
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['user']; ?>
-                    </a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['user']; ?></a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="proses/logout.php">Log Out</a>
                     </div>
@@ -107,7 +140,7 @@ if (isset($_SESSION['kd_cm'])) {
                 ?>
             </div>
         </nav>
-    </header><!-- /header -->
+    </header>
 
     <main>
         <!-- Banner Section -->
@@ -209,42 +242,41 @@ if (isset($_SESSION['kd_cm'])) {
                     </div>
                 </div>
                 <div class="row g-4">
-            <!-- Kartu Visi -->
-            <div class="col-md-6">
-                <div class="card border-0 shadow-lg h-100" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-body text-center p-5 bg-primary text-white rounded-3">
-                        <div class="icon mb-3">
-                            <i class="bi bi-eye" style="font-size: 2rem;"></i>
+                    <!-- Kartu Visi -->
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-lg h-100" data-aos="fade-up" data-aos-delay="100">
+                            <div class="card-body text-center p-5 bg-primary text-white rounded-3">
+                                <div class="icon mb-3">
+                                    <i class="bi bi-eye" style="font-size: 2rem;"></i>
+                                </div>
+                                <h4 class="card-title fw-bold mb-3">Visi</h4>
+                                <p class="card-text fs-5">
+                                    Hidup untuk Berbagi, Berbagi untuk Kehidupan yang Lebih Baik, dan Menjadi Profesional TI Kelas Dunia.
+                                </p>
+                            </div>
                         </div>
-                        <h4 class="card-title fw-bold mb-3">Visi</h4>
-                        <p class="card-text fs-5">
-                            Hidup untuk Berbagi, Berbagi untuk Kehidupan yang Lebih Baik, dan Menjadi Profesional TI Kelas Dunia.
-                        </p>
                     </div>
-                </div>
-            </div>
 
-            <!-- Kartu Misi -->
-            <div class="col-md-6">
-                <div class="card border-0 shadow-lg h-100" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-body text-center p-5 bg-success text-white rounded-3">
-                        <div class="icon mb-3">
-                            <i class="bi bi-bullseye" style="font-size: 2rem;"></i>
+                    <!-- Kartu Misi -->
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-lg h-100" data-aos="fade-up" data-aos-delay="200">
+                            <div class="card-body text-center p-5 bg-success text-white rounded-3">
+                                <div class="icon mb-3">
+                                    <i class="bi bi-bullseye" style="font-size: 2rem;"></i>
+                                </div>
+                                <h4 class="card-title fw-bold mb-3">Misi</h4>
+                                <p class="card-text fs-5">
+                                    Menawarkan solusi kemitraan multi-level untuk kehidupan yang lebih baik dan membantu profesional TI kelas dunia melalui Solusi AMAL.
+                                </p>
+                            </div>
                         </div>
-                        <h4 class="card-title fw-bold mb-3">Misi</h4>
-                        <p class="card-text fs-5">
-                            Menawarkan solusi kemitraan multi-level untuk kehidupan yang lebih baik dan membantu profesional TI kelas dunia melalui Solusi AMAL.
-                        </p>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
     </main>
 
-
-            <footer>
+    <footer>
         <div class="container">
             <div class="footer-content d-flex justify-content-between align-items-start">
                 <div class="footer-brand">
@@ -262,8 +294,6 @@ if (isset($_SESSION['kd_cm'])) {
             </div>
         </div>
     </footer>
-
-
 
     <script>
         AOS.init();
