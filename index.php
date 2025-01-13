@@ -300,23 +300,30 @@ footer {
           <li><a href="#tentangkami">Tentang Kami</a></li>
         </ul>
       </div>
-      <div class="icon-for-user dropdown">
-        <?php if (!isset($_SESSION['user'])) { ?>
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="bi bi-person-circle"></i>
-          </a>
-          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="user_login.php">Login</a>
-            <a class="dropdown-item" href="register.php">Register</a>
-          </div>
-        <?php } else { ?>
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="bi bi-person-circle"></i>
-          </a>
-          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="proses/logout.php">Log Out</a>
-          </div>
-        <?php } ?>
+      <div class="icon-for-user">
+				<a href="#">
+					<img src="assets/icons/person.png">
+				</a>
+				<?php
+				if (!isset($_SESSION['user'])) {
+				?>
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="user_login.php">Login</a>
+						<a class="dropdown-item" href="register.php">Register</a>
+					</div>
+				<?php
+				} else {
+				?>
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['user']; ?>
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="proses/logout.php">Log Out</a>
+					</div>
+				<?php
+				}
+				?>
       </div>
     </nav>
   </header>

@@ -225,7 +225,7 @@
         <div class="contact-details">
             <p>Bandung, Jawa Barat</p>
             <p><a href="mailto:amalsolution@gmail.com">amalsolution@gmail.com</a></p>
-            <p><a href="tel:+6291219613083">+6281219613083</a></p>
+            <p><a href="tel:+6281219613083">+6281219613083</a></p>
         </div>
         <div class="social-links">
             <a href="#"><i class="bi bi-facebook"></i></a>
