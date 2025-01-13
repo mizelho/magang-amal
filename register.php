@@ -1,9 +1,6 @@
 <?php
-session_start();
+session_start(); // Pastikan session dimulai
 include 'koneksi/koneksi.php';
-if (isset($_SESSION['kd_pm'])) {
-  $kode_cs = $_SESSION['kd_pm'];
-}
 ?>
 
 <!DOCTYPE html>
@@ -15,130 +12,152 @@ if (isset($_SESSION['kd_pm'])) {
   <link rel="stylesheet" type="text/css" href="style/main.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <style>
+    .main-nav {
+      background-color: #ffffff;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-nav .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .main-nav .brand img {
+      width: 50px;
+      margin-right: 10px;
+    }
+
+    .main-nav a {
+      color: #f8f9fa;
+      text-decoration: none;
+      font-weight: 500;
+      margin: 0 15px;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .main-nav a:hover {
+      color: #ffc107;
+    }
+
+    .main-nav .links ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    .main-nav .links ul li {
+      margin: 0 10px;
+    }
+
+    .icon-for-user a {
+      color: #f8f9fa;
+    }
+
+    .icon-for-user a:hover {
+      color: #ffc107;
+    }
+
+    .register {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+    }
+
+    .register .form {
+      width: 100%;
+      max-width: 500px;
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  </style>
   <title>Register</title>
 </head>
 
 <body>
   <header>
-  <nav class="main-nav">
-        <div class="brand text-main" style="display: flex; align-items: center;">
-            <!-- Logo -->
-            <img src="assets/images/logo.png" alt="Logo" style="width: 50px; height: auto; margin-right: 10px;">
-            <!-- Nama Perusahaan -->
-            <a href="index.php">
-                <h1>Amal Solution</h1>
-            </a>
-        </div>
+    <nav class="main-nav d-flex justify-content-between align-items-center">
+      <div class="brand text-main">
+        <!-- Logo -->
+        <img src="assets/images/logo.png" alt="Logo">
+        <!-- Nama Perusahaan -->
+        <a href="index.php" class="text-decoration-none">
+          <h1 class="m-0">Amal Solution</h1>
+        </a>
+      </div>
       <div class="links">
-        <ul>
+        <ul class="d-flex">
           <li><a href="index.php">Menu</a></li>
           <li><a href="lamar.php">Lamar</a></li>
         </ul>
       </div>
-      <div class="icon-for-user">
-        <a href="#"></a>
-        <?php
-        if (!isset($_SESSION['user'])) {
-        ?>
+      <div class="icon-for-user dropdown">
+        <?php if (!isset($_SESSION['user'])) { ?>
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="bi bi-person-circle"></i>
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="user_login.php">Login</a>
             <a class="dropdown-item" href="register.php">Register</a>
           </div>
-        <?php
-        } else {
-        ?>
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['user']; ?>
+        <?php } else { ?>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="bi bi-person-circle"></i>
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="proses/logout.php">Log Out</a>
           </div>
-        <?php
-        }
-        ?>
+        <?php } ?>
       </div>
     </nav>
-  </header><!-- /header -->
+  </header>
 
   <main>
     <div class="container">
       <div class="register">
         <div class="text-register">
           <h2 class="text-main">Register</h2>
-          <br>
-          <div class="form">
-            <form action="proses/register.php" method="POST">
-              <div class="row">
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Nama</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nama" name="nama" style="width: 500px;" required>
-                </div>
-              </div>
-              <br>
-              <div class="row">
-                <div class="form-group">
-                  <label for="exampleInputPassword1" class="text-second">Username</label>
-                  <input type="text" class="form-control text-second" id="exampleInputPassword1" placeholder="Username" name="username" style="width: 500px;" required>
-                </div>
-              </div>
-              <br>
-              <div class="row">
-                <div class="form-group">
-                  <label for="exampleInputPassword1" class="text-second">Email</label>
-                  <input type="email" class="form-control text-second" id="exampleInputPassword1" placeholder="Email" name="email" style="width: 500px;" required>
-                </div>
-              </div>
-              <br>
-              <div class="row">
-                <div class="form-group">
-                  <label for="exampleInputPassword1" class="text-second">Password</label>
-                  <input type="password" class="form-control text-second" id="exampleInputPassword1" placeholder="Password" name="password" style="width: 500px;" required>
-                </div>
-              </div>
-              <br>
-              <div class="row">
-                <div class="form-group">
-                  <label for="exampleInputPassword1" class="text-second">Konfirmasi Password</label>
-                  <input type="password" class="form-control text-second" id="exampleInputPassword1" placeholder="Konfirmasi Password" name="konfirmasi" style="width: 500px;" required>
-                </div>
-              </div>
-              <br>
-              <div class="button-wrapper">
-                <button type="submit" class="btn btn-dark">Register</button>
-              </div>
-            </form>
-          </div>
+        </div>
+        <div class="form">
+          <form action="proses/register.php" method="POST">
+            <div class="form-group">
+              <label for="nama" class="text-second">Nama Lengkap</label>
+              <input type="text" class="form-control text-second" id="nama" name="nama" placeholder="Nama Lengkap" required>
+            </div><br>
+            <div class="form-group">
+              <label for="email" class="text-second">Email</label>
+              <input type="email" class="form-control text-second" id="email" name="email" placeholder="Email" required>
+            </div><br>
+            <div class="form-group">
+              <label for="username" class="text-second">Username</label>
+              <input type="text" class="form-control text-second" id="username" name="username" placeholder="Username" required>
+            </div><br>
+            <div class="form-group">
+              <label for="password" class="text-second">Password</label>
+              <input type="password" class="form-control text-second" id="password" name="password" placeholder="Password" required>
+            </div><br>
+            <div class="form-group">
+              <label for="konfirmasi" class="text-second">Konfirmasi Password</label>
+              <input type="password" class="form-control text-second" id="konfirmasi" name="konfirmasi" placeholder="Konfirmasi Password" required>
+            </div><br>
+            <div class="button-wrapper text-center">
+              <button type="submit" class="btn btn-dark text-second">Register</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </main>
 
-
   <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-brand">
-          <div>
-            <h1 class="text-main">Amal Solution</h1>
-          </div>
-        </div>
-
-        <div class="footer-item">
-          <div>
-            <h3 class="text-main">Bisnis</h3>
-            <p><a href="#">amalsolution@gmail.com</a></p>
-            <p><a href="#">081219613083</a></p>
-            <p><a href="#">Bandung, Jawa Barat</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="copyright-section border-top">
-        <div class="row">
-          <div class="copyright-content text-center mt-4">
-            <p class="text-second">amalsolution Store Copyright &copy; 2024 All Rights Reserved</p>
-          </div>
-        </div>
+      <div class="copyright-section border-top mt-4 pt-3 text-center">
+        <p class="text-second">Amal Solution Store Copyright &copy; 2024 All Rights Reserved</p>
       </div>
     </div>
   </footer>

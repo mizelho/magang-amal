@@ -4,140 +4,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style/main.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <title>Media</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f9;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f9f9f9, #eaeff2);
             margin: 0;
             padding: 0;
         }
 
+        header {
+            background: #fffff;
+            color: #000;
+            padding: 10px 20px;
+        }
+
+        header .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .brand {
+            display: flex;
+            align-items: center;
+        }
+
+        header .brand img {
+            width: 50px;
+            margin-right: 10px;
+        }
+
+        header .brand h1 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        header .links ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        header .links ul li {
+            margin-left: 20px;
+        }
+
+        header .links ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        header .links ul li a:hover,
+        header .links ul li.active a {
+            color: #ffca2c;
+        }
+
         main {
-            margin-bottom: 100px;
-            padding: 20px;
+            padding: 40px 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #1e2a47;
+            font-weight: 700;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            width: 100px;
+            height: 3px;
+            background: #ff5722;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .gallery-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
 
         .album {
-            border: 1px solid #ddd;
+            background: #fff;
             border-radius: 12px;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(179, 3, 3, 0.75);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .album:hover {
-            transform: scale(1.05);
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         .album h3 {
             text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-            font-size: 1.25rem;
-            font-weight: bold;
+            padding: 20px;
+            background: linear-gradient(135deg,rgb(121, 54, 41),rgb(201, 38, 6));
+            color: #fff;
+            margin: 0;
+            font-size: 1.5rem;
         }
 
         .album-images {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 10px;
+            padding: 15px;
             justify-content: center;
         }
 
         .album-images img {
-            width: 100%;
-            max-width: 150px;
-            height: 150px;
-            object-fit: cover;
             border-radius: 8px;
-            transition: transform 0.3s ease;
+            width: 100%;
+            max-width: 120px;
+            height: 120px;
+            object-fit: cover;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .album-images img:hover {
             transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         footer {
-            background-color: #222;
-            color: #fff;
-            padding: 40px 0;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 30px;
-        }
-
-        .footer-content .footer-brand h1 {
-            font-size: 1.75rem;
-            color: #d1d1d1;
-        }
-
-        .footer-content .footer-item h3 {
-            font-size: 1.25rem;
-            color: #fff;
-        }
-
-        .footer-content .footer-item p {
-            margin: 5px 0;
+            background: #1e2a47;
             color: #bbb;
+            padding: 40px 20px;
+            text-align: center;
         }
 
-        .footer-content .footer-item a {
-            color: #d1d1d1;
+        footer .footer-brand h1 {
+            font-size: 1.75rem;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        footer a {
+            color: #ffca2c;
             text-decoration: none;
         }
 
-        .footer-content .footer-item a:hover {
-            color: #a6a6a6;
+        footer a:hover {
+            color: #ffd966;
+        }
+
+        footer p {
+            margin: 5px 0;
         }
 
         .copyright-section {
-            margin-top: 40px;
+            margin-top: 20px;
             border-top: 1px solid #444;
             padding-top: 20px;
-            text-align: center;
-            color: #bbb;
-        }
-
-        .text-main {
-            color: #1e2a47;
-        }
-
-        .text-second {
-            color: #ccc;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 
 <body>
     <header>
-    <nav class="main-nav">
-        <div class="brand text-main" style="display: flex; align-items: center;">
-            <!-- Logo -->
-            <img src="assets/images/logo.png" alt="Logo" style="width: 50px; height: auto; margin-right: 10px;">
-            <!-- Nama Perusahaan -->
-            <a href="index.php">
+        <nav class="main-nav">
+            <div class="brand">
+                <img src="assets/images/logo.png" alt="Logo">
                 <h1>Amal Solution</h1>
-            </a>
-        </div>
+            </div>
             <div class="links">
                 <ul>
-                    <li><a href="index.php">Menu</a></li>
+                    <li><a href="index.php">Home</a></li>
                     <li class="active"><a href="produk.php">Media</a></li>
                 </ul>
             </div>
@@ -145,15 +190,12 @@
     </header>
 
     <main>
-        <div class="container mt-5 mb-5">
-            <h2 class="text-center text-main mb-4">Album Media</h2>
-
-            <div class="gallery-container">
-                <!-- Album 1 -->
-                <div class="album">
-                    <h3>Amal Solution Team</h3>
-                    <div class="album-images">
-                        <img src="assets/images/photo1.jpg" alt="Event Launch 1">
+        <h2>Album Media</h2>
+        <div class="gallery-container">
+            <div class="album">
+                <h3>Amal Solution Team</h3>
+                <div class="album-images">
+                <img src="assets/images/photo1.jpg" alt="Event Launch 1">
                         <img src="assets/images/photo2.jpg" alt="Event Launch 2">
                         <img src="assets/images/photo3.jpg" alt="Event Launch 3">
                         <img src="assets/images/photo4.jpg" alt="Event Launch 4">
@@ -162,14 +204,12 @@
                         <img src="assets/images/photo66.jpg" alt="Event Launch 7">
                         <img src="assets/images/photo666.jpg" alt="Event Launch 8">
                         <img src="assets/images/photo6666.jpg" alt="Event Launch 9">
-                        <img src="assets/images/photo66666.jpg" alt="Event Launch 10">
-                    </div>
                 </div>
-                <!-- Album 2 -->
-                <div class="album">
-                    <h3>Kegiatan Rapat Team</h3>
-                    <div class="album-images">
-                        <img src="assets/images/photo7.jpg" alt="Team Meeting 1">
+            </div>
+            <div class="album">
+                <h3>Kegiatan Rapat Team</h3>
+                <div class="album-images">
+                <img src="assets/images/photo7.jpg" alt="Team Meeting 1">
                         <img src="assets/images/photo8.jpg" alt="Team Meeting 2">
                         <img src="assets/images/photo9.jpg" alt="Team Meeting 3">
                         <img src="assets/images/photo10.jpg" alt="Team Meeting 4">
@@ -178,14 +218,12 @@
                         <img src="assets/images/photo122.jpg" alt="Team Meeting 7">
                         <img src="assets/images/photo1222.jpg" alt="Team Meeting 8">
                         <img src="assets/images/photo12222.jpg" alt="Team Meeting 9">
-                        <img src="assets/images/photo122222.jpg" alt="Team Meeting 10">
-                    </div>
                 </div>
-                <!-- Album 3 -->
-                <div class="album">
-                    <h3>Kegiatan Presentasi</h3>
-                    <div class="album-images">
-                        <img src="assets/images/photo13.jpg" alt="Presentation 1">
+            </div>
+            <div class="album">
+                <h3>Kegiatan Presentasi</h3>
+                <div class="album-images">
+                <img src="assets/images/photo13.jpg" alt="Presentation 1">
                         <img src="assets/images/photo14.jpg" alt="Presentation 2">
                         <img src="assets/images/photo15.jpg" alt="Presentation 3">
                         <img src="assets/images/photo16.jpg" alt="Presentation 4">
@@ -194,29 +232,28 @@
                         <img src="assets/images/photo19.jpg" alt="Presentation 7">
                         <img src="assets/images/photo20.jpg" alt="Presentation 8">
                         <img src="assets/images/photo21.jpg" alt="Presentation 9">
-                        <img src="assets/images/photo22.jpg" alt="Presentation 10">
-                    </div>
                 </div>
             </div>
         </div>
     </main>
 
     <footer>
-        <div class="container mt-5">
-            <div class="footer-content d-flex justify-content-between align-items-start">
-                <div class="footer-brand">
-                    <h1 class="text-main">Amal Solution</h1>
-                </div>
-                <div class="footer-item">
-                    <h3 class="text-main">Bisnis</h3>
-                    <p><a href="mailto:amalsolution@gmail.com">amalsolution@gmail.com</a></p>
-                    <p><a href="tel:+6291219613083">091219613083</a></p>
-                    <p>Bandung, Jawa Barat</p>
-                </div>
-            </div>
-            <div class="copyright-section border-top mt-4 pt-3 text-center">
-                <p class="text-second">Amal Solution Store Copyright &copy; 2024 All Rights Reserved</p>
-            </div>
+        <div class="footer-brand">
+            <img src="assets/images/logo.png" alt="Logo" style="width: 40px;">
+            <h1>Amal Solution</h1>
+        </div>
+        <div class="contact-details">
+            <p>Bandung, Jawa Barat</p>
+            <p><a href="mailto:amalsolution@gmail.com">amalsolution@gmail.com</a></p>
+            <p><a href="tel:+6291219613083">+6281219613083</a></p>
+        </div>
+        <div class="social-links">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-twitter"></i></a>
+        </div>
+        <div class="copyright">
+            &copy; 2024 Amal Solution Store. All Rights Reserved.
         </div>
     </footer>
 </body>

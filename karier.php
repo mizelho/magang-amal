@@ -189,45 +189,59 @@
 
 <body>
 <header>
-    <nav class="main-nav">
-        <div class="brand text-main" style="display: flex; align-items: center;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
             <!-- Logo -->
-            <img src="assets/images/logo.png" alt="Logo" style="width: 50px; height: auto; margin-right: 10px;">
-            <!-- Nama Perusahaan -->
-            <a href="index.php">
-                <h1>Amal Solution</h1>
+            <a class="navbar-brand d-flex align-items-center" href="index.php">
+                <img src="assets/images/logo.png" alt="Logo" style="width: 50px; height: auto; margin-right: 10px;">
+                <span>Amal Solution</span>
             </a>
-        </div>
-        <div class="links">
-            <ul>
-                <li><a href="index.php">Menu</a></li>
-                <li><a href="karier.php">Karier</a></li>
-                <li class="active"><a href="lamar.php">Lamar sekarang</a></li>
-            </ul>
-        </div>
-        <a href="#">
-            <img src="assets/icons/person.png" alt="User Icon">
-        </a>
-        <?php if (!isset($_SESSION['user'])) { ?>
-            <!-- Jika pengguna belum login -->
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Login/Register
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="user_login.php">Login</a>
-                <a class="dropdown-item" href="register.php">Register</a>
+
+            <!-- Toggler Button for Mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- home Items -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="karier.php">Karier</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="lamar.php">Lamar Sekarang</a>
+                    </li>
+                </ul>
+
+                <!-- Login/Register or User Dropdown -->
+                <?php if (!isset($_SESSION['user'])) { ?>
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Login/Register
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="user_login.php">Login</a></li>
+                            <li><a class="dropdown-item" href="register.php">Register</a></li>
+                        </ul>
+                    </div>
+                <?php } else { ?>
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <?= htmlspecialchars($_SESSION['user']); ?>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="proses/logout.php">Log Out</a></li>
+                        </ul>
+                    </div>
+                <?php } ?>
             </div>
-        <?php } else { ?>
-            <!-- Jika pengguna sudah login -->
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <?= htmlspecialchars($_SESSION['user']); ?>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="proses/logout.php">Log Out</a>
-            </div>
-        <?php } ?>
+        </div>
     </nav>
 </header>
+
     <main>
     <section class="hero" style="background: linear-gradient(135deg, #6a5acd, #4b0082);">
     <h2>Karier di Amal Solution</h2>
