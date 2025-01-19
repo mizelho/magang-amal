@@ -2,25 +2,22 @@
 session_start();
 include '../koneksi/koneksi.php';
 
-// Cek apakah 'username' dan 'pass' ada di $_POST
 if (isset($_POST['username']) && isset($_POST['pass'])) {
     $username = $_POST['username'];
-    $password = trim($_POST['pass']); // Menghilangkan spasi yang tidak terlihat
+    $password = trim($_POST['pass']);
 } else {
-    echo "<script>alert('Username atau password tidak ditemukan'); window.location = '../user_login.php';</script>";
-    die;
+    header("Location: ../user_login.php?error=missing_credentials");
+    exit;
 }
 
-// Periksa apakah query berjalan dengan benar
 $cek = mysqli_query($conn, "SELECT * FROM pelamar WHERE username = '$username'");
 if (!$cek) {
-    echo "<script>alert('Query Error: " . mysqli_error($conn) . "'); window.location = '../user_login.php';</script>";
-    die;
+    $error_message = urlencode(mysqli_error($conn));
+    header("Location: ../user_login.php?error=query_error&message=$error_message");
+    exit;
 }
 
 $jml = mysqli_num_rows($cek);
-
-// Periksa apakah data ditemukan
 if ($jml == 1) {
     $row = mysqli_fetch_assoc($cek);
     if (isset($row['Password']) && password_verify($password, $row['Password'])) {
@@ -29,11 +26,11 @@ if ($jml == 1) {
         header('Location: ../index.php');
         exit;
     } else {
-        echo "<script>alert('Password / Username salah'); window.location = '../user_login.php';</script>";
-        die;
+        header("Location: ../user_login.php?error=invalid_credentials");
+        exit;
     }
 } else {
-    echo "<script>alert('Username tidak ditemukan'); window.location = '../user_login.php';</script>";
-    die;
+    header("Location: ../user_login.php?error=user_not_found");
+    exit;
 }
 ?>
