@@ -1,5 +1,10 @@
 <?php
-// contact.php
+session_start(); 
+if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+    header(header: 'HTTP/1.0 404 Not Found');
+    include('404.php');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -10,32 +15,11 @@
     <link rel="stylesheet" href="style/main.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
     <title>Hubungi Kami</title>
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #eceff1, #f5f7f9);
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background-color: #fff;
-            color: #000;
-            padding: 10px 20px;
-            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        header .main-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
         header .brand {
             display: flex;
             align-items: center;
@@ -126,83 +110,12 @@
         .contact-section button:hover {
             background-color: #e64a19;
         }
-
-        footer {
-            background-color: #1e2a47;
-            color: #f1f1f1;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 50px;
-        }
-
-        footer .footer-brand {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        footer .footer-brand h1 {
-            font-size: 1.8rem;
-            margin-left: 10px;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        footer .contact-details p {
-            margin: 5px 0;
-            font-size: 1rem;
-        }
-
-        footer .contact-details a {
-            color: #ffca2c;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        footer .contact-details a:hover {
-            color: #ffd966;
-        }
-
-        footer .social-links {
-            margin: 20px 0;
-        }
-
-        footer .social-links a {
-            color: #f1f1f1;
-            margin: 0 10px;
-            font-size: 1.5rem;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        footer .social-links a:hover {
-            color: #ffca2c;
-        }
-
-        footer .copyright {
-            margin-top: 20px;
-            font-size: 0.9rem;
-            color: #bbb;
-        }
     </style>
 </head>
 
 <body>
     <header>
-        <nav class="main-nav">
-            <div class="brand">
-                <img src="assets/images/logo.png" alt="Logo">
-                <h1>Amal Solution</h1>
-            </div>
-            <div class="links">
-                <ul>
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="media.php">Media</a></li>
-                    <li class="active"><a href="contact.php">Hubungi Kami</a></li>
-                </ul>
-            </div>
-        </nav>
+        <?php include './components/navbar.php'; ?>
     </header>
 
     <main>
@@ -217,25 +130,8 @@
         </section>
     </main>
 
-    <footer>
-        <div class="footer-brand">
-            <img src="assets/images/logo.png" alt="Logo" style="width: 40px;">
-            <h1>Amal Solution</h1>
-        </div>
-        <div class="contact-details">
-            <p>Bandung, Jawa Barat</p>
-            <p><a href="mailto:amalsolution@gmail.com">amalsolution@gmail.com</a></p>
-            <p><a href="tel:+6281219613083">+6281219613083</a></p>
-        </div>
-        <div class="social-links">
-            <a href="#"><i class="bi bi-facebook"></i></a>
-            <a href="#"><i class="bi bi-instagram"></i></a>
-            <a href="#"><i class="bi bi-twitter"></i></a>
-        </div>
-        <div class="copyright">
-            &copy; 2024 Amal Solution Store. All Rights Reserved.
-        </div>
-    </footer>
+    <?php include './components/footer.php'; ?>
+
 </body>
 
 </html>

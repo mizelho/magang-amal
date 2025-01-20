@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,30 +13,6 @@
 
     <title>Media</title>
     <style>
-      body {
-          font-family: 'Poppins', sans-serif;
-          background: linear-gradient(135deg, #f9f9f9, #eaeff2);
-          margin: 0;
-          padding: 0;
-      }
-
-      header {
-          background: #ffffff;
-          color: #000000;
-          padding: 10px 20px;
-      }
-
-      header .main-nav {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-      }
-
-      header .brand {
-          display: flex;
-          align-items: center;
-      }
-
       header .brand img {
           width: 50px;
           margin-right: 10px;

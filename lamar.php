@@ -1,3 +1,12 @@
+<?php
+session_start(); 
+if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+    header(header: 'HTTP/1.0 404 Not Found');
+    include('404.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

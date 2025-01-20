@@ -1,6 +1,12 @@
 <?php
 session_start(); 
 include 'koneksi/koneksi.php';
+if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+    header('HTTP/1.0 404 Not Found');
+    include('404.php');
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +29,17 @@ include 'koneksi/koneksi.php';
   <header>
   <?php include './components/navbar.php'; ?>
   </header>
-
+  
   <main>
+    <section class="banner">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-12 text-center">
+          <div class="banner-image">
+            <img src="assets/images/home.png" alt="image-banner" class="img-fluid rounded">
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="sistiminformasi py-5">
       <div class="container">
         <div class="text-center mb-4">

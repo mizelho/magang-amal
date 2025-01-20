@@ -1,6 +1,12 @@
 <?php
 session_start();
 $loggedIn = isset($_SESSION['user']);
+if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+    header('HTTP/1.0 404 Not Found');
+    include('404.php');
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>

@@ -120,6 +120,7 @@
                   <span class="input-group-text" id="toggleConfirmPassword"><i class="fas fa-eye"></i></span>
                 </div>
               </div>
+              <input type="hidden" name="role" value="pelamar">
             </div>
             <div class="d-grid">
               <button type="submit" class="btn btn-primary">Register</button>
@@ -226,7 +227,7 @@
             title: 'Success!',
             text: data.message
           }).then(() => {
-            window.location = '../user_login.php';
+            window.location = '../magang-amal/user_login.php';
           });
         }
       })

@@ -23,7 +23,13 @@ if ($jml == 1) {
     if (isset($row['Password']) && password_verify($password, $row['Password'])) {
         $_SESSION['user'] = $row['nama'];
         $_SESSION['kd_pm'] = $row['kode_pelamar'];
-        header('Location: ../index.php');
+        $_SESSION['role'] = $row['role']; 
+        
+        if ($_SESSION['role'] === 'admin') {
+            header('Location: ../admin_dashboard.php');
+        } else {
+            header('Location: ../index.php');
+        }
         exit;
     } else {
         header("Location: ../user_login.php?error=invalid_credentials");
@@ -33,4 +39,3 @@ if ($jml == 1) {
     header("Location: ../user_login.php?error=user_not_found");
     exit;
 }
-?>

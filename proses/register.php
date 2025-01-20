@@ -21,6 +21,7 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 $email = $_POST['email'];
 $konfirmasi = $_POST['konfirmasi'];
+$role = $_POST['role'];
 
 $hash = password_hash($password, PASSWORD_DEFAULT);
 
@@ -36,11 +37,20 @@ if ($password === $konfirmasi) {
         exit;
     }
 
-    $result = mysqli_query($conn, "INSERT INTO pelamar VALUES('$format','$nama', '$email', '$username', '$hash')");
+    // Menambahkan nilai role dalam query INSERT
+    $result = mysqli_query($conn, "INSERT INTO pelamar (kode_pelamar, nama, email, username, password, role) 
+                                    VALUES('$format','$nama', '$email', '$username', '$hash', '$role')");
+
     if ($result) {
         echo json_encode([
             'status' => 'success',
             'message' => 'REGISTRATION SUCCESSFUL'
+        ]);
+        exit;
+    } else {
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'DATABASE INSERTION FAILED'
         ]);
         exit;
     }
