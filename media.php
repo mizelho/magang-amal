@@ -7,186 +7,145 @@
     <link rel="stylesheet" href="style/main.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
     <title>Media</title>
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f9f9f9, #eaeff2);
-            margin: 0;
-            padding: 0;
-        }
+      body {
+          font-family: 'Poppins', sans-serif;
+          background: linear-gradient(135deg, #f9f9f9, #eaeff2);
+          margin: 0;
+          padding: 0;
+      }
 
-        header {
-            background: #fffff;
-            color: #000;
-            padding: 10px 20px;
-        }
+      header {
+          background: #ffffff;
+          color: #000000;
+          padding: 10px 20px;
+      }
 
-        header .main-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+      header .main-nav {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
 
-        header .brand {
-            display: flex;
-            align-items: center;
-        }
+      header .brand {
+          display: flex;
+          align-items: center;
+      }
 
-        header .brand img {
-            width: 50px;
-            margin-right: 10px;
-        }
+      header .brand img {
+          width: 50px;
+          margin-right: 10px;
+      }
 
-        header .brand h1 {
-            font-size: 1.5rem;
-            margin: 0;
-        }
+      header .brand h1 {
+          font-size: 1.5rem;
+          margin: 0;
+      }
 
-        header .links ul {
-            display: flex;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+      header .links ul {
+          display: flex;
+          list-style: none;
+          padding: 0;
+          margin: 0;
+      }
 
-        header .links ul li {
-            margin-left: 20px;
-        }
+      header .links ul li {
+          margin-left: 20px;
+      }
 
-        header .links ul li a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: 500;
-        }
+      header .links ul li a {
+          text-decoration: none;
+          color: #fff;
+          font-weight: 500;
+      }
 
-        header .links ul li a:hover,
-        header .links ul li.active a {
-            color: #ffca2c;
-        }
+      header .links ul li a:hover,
+      header .links ul li.active a {
+          color: #ffca2c;
+      }
 
-        main {
-            padding: 40px 20px;
-        }
+      main {
+          padding: 40px 20px;
+      }
 
-        h2 {
-            text-align: center;
-            color: #1e2a47;
-            font-weight: 700;
-            margin-bottom: 40px;
-            position: relative;
-        }
+      h2 {
+          text-align: center;
+          color: #1e2a47;
+          font-weight: 700;
+          margin-bottom: 40px;
+          position: relative;
+      }
 
-        h2::after {
-            content: '';
-            width: 100px;
-            height: 3px;
-            background: #ff5722;
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+      h2::after {
+          content: '';
+          width: 100px;
+          height: 3px;
+          background: #ff5722;
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+      }
 
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
+      .gallery-container {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 20px;
+      }
 
-        .album {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(179, 3, 3, 0.75);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+      .album {
+          background: #fff;
+          border-radius: 12px;
+          box-shadow: 0 4px 8px rgba(179, 3, 3, 0.75);
+          overflow: hidden;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
 
-        .album:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
+      .album:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
 
-        .album h3 {
-            text-align: center;
-            padding: 20px;
-            background: linear-gradient(135deg,rgb(121, 54, 41),rgb(201, 38, 6));
-            color: #fff;
-            margin: 0;
-            font-size: 1.5rem;
-        }
+      .album h3 {
+          text-align: center;
+          padding: 20px;
+          background: linear-gradient(135deg,rgb(121, 54, 41),rgb(201, 38, 6));
+          color: #fff;
+          margin: 0;
+          font-size: 1.5rem;
+      }
 
-        .album-images {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            padding: 15px;
-            justify-content: center;
-        }
+      .album-images {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          padding: 15px;
+          justify-content: center;
+      }
 
-        .album-images img {
-            border-radius: 8px;
-            width: 100%;
-            max-width: 120px;
-            height: 120px;
-            object-fit: cover;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+      .album-images img {
+          border-radius: 8px;
+          width: 100%;
+          max-width: 120px;
+          height: 120px;
+          object-fit: cover;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
 
-        .album-images img:hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        footer {
-            background: #1e2a47;
-            color: #bbb;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        footer .footer-brand h1 {
-            font-size: 1.75rem;
-            color: #fff;
-            margin-bottom: 15px;
-        }
-
-        footer a {
-            color: #ffca2c;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            color: #ffd966;
-        }
-
-        footer p {
-            margin: 5px 0;
-        }
-
-        .copyright-section {
-            margin-top: 20px;
-            border-top: 1px solid #444;
-            padding-top: 20px;
-            font-size: 0.9rem;
-        }
+      .album-images img:hover {
+          transform: scale(1.1);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
     </style>
 </head>
 
 <body>
     <header>
-        <nav class="main-nav">
-            <div class="brand">
-                <img src="assets/images/logo.png" alt="Logo">
-                <h1>Amal Solution</h1>
-            </div>
-            <div class="links">
-                <ul>
-                    <li><a href="index.php">Home</a></li>
-                    <li class="active"><a href="produk.php">Media</a></li>
-                </ul>
-            </div>
-        </nav>
+      <?php include './components/navbar.php'; ?>
     </header>
 
     <main>
@@ -237,25 +196,8 @@
         </div>
     </main>
 
-    <footer>
-        <div class="footer-brand">
-            <img src="assets/images/logo.png" alt="Logo" style="width: 40px;">
-            <h1>Amal Solution</h1>
-        </div>
-        <div class="contact-details">
-            <p>Bandung, Jawa Barat</p>
-            <p><a href="mailto:amalsolution@gmail.com">amalsolution@gmail.com</a></p>
-            <p><a href="tel:+6291219613083">+6281219613083</a></p>
-        </div>
-        <div class="social-links">
-            <a href="#"><i class="bi bi-facebook"></i></a>
-            <a href="#"><i class="bi bi-instagram"></i></a>
-            <a href="#"><i class="bi bi-twitter"></i></a>
-        </div>
-        <div class="copyright">
-            &copy; 2024 Amal Solution Store. All Rights Reserved.
-        </div>
-    </footer>
+    <?php include './components/footer.php'; ?>
+
 </body>
 
 </html>

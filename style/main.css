@@ -1,325 +1,357 @@
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,700;1,500;1,600&family=Noto+Sans+JP:wght@100;300;400;500;700&display=swap");
-
-* {
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f9f9f9, #eaeff2);
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto', sans-serif;
+  color: #222;
+}
+p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+a {
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Navigation Bar */
+.main-nav {
+  background-color: #ffffff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.main-nav .brand {
+  display: flex;
+  align-items: center;
+}
+
+.main-nav .brand img {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.main-nav h1 {
+  font-size: 1.5rem;
+  color: #222;
+}
+
+.main-nav .links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.main-nav .links ul li {
+  margin: 0 15px;
+}
+
+.main-nav .links ul li a {
+  font-weight: 500;
+  color: #555;
+}
+
+
+.icon-for-user a {
+  color: #555;
+  font-size: 1.2rem;
+}
+
+
+/* Banner Section */
+.banner img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* Sistim Informasi Section */
+.sistiminformasi {
+  background-color: #ffffff;
+  padding: 40px 0;
+}
+
+.sistiminformasi h3 {
+  color: #222;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card .card-title {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.card .card-text {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+
+/* Visi & Misi Section */
+#tentangkami {
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #eef2f3, #d9e4f5); /* Gradient background for a modern look */
+  color: #333; /* Default text color for contrast */
+}
+
+#tentangkami h2 {
+  color: #222; /* Darker for strong contrast */
+  margin-bottom: 40px;
+  text-transform: uppercase; /* Add emphasis */
+  font-weight: bold;
+  font-size: 2.5rem; /* Larger font for impact */
+  text-align: center;
+}
+
+#tentangkami .card {
+  border: none;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  padding: 30px;
+  border-radius: 15px; /* Smooth, elegant corners */
+  background: #ffffff; /* Clean white background for contrast */
+  color: #555; /* Neutral text color */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Elegant shadow */
+}
+
+#tentangkami .card:hover {
+  transform: translateY(-12px); /* Smooth lift effect */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
+}
+
+#tentangkami .card .icon {
+  font-size: 3.5rem; /* Larger for visibility */
+  color: #fff; /* White icon color */
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 50%; /* Circular background */
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+#tentangkami .bg-primary {
+  background: linear-gradient(135deg, #6a9ae2, #4a90e2); /* Modern gradient blue */
+}
+
+#tentangkami .bg-success {
+  background: linear-gradient(135deg, #58c686, #42a35c); /* Modern gradient green */
+}
+
+#tentangkami .card:hover .icon {
+  transform: rotate(15deg) scale(1.1); /* Add a dynamic hover effect */
+  background: rgba(255, 255, 255, 0.3); /* Subtle highlight */
+}
+
+#tentangkami .card .text {
+  font-size: 1.1rem; /* Slightly larger text */
+  line-height: 1.6; /* Better readability */
+  color: #444; /* Ensure text stands out */
 }
 
 .text-main {
-  font-family: "Josefin Sans", sans-serif;
+  color: #222;
 }
 
 .text-second {
-  font-family: "Noto Sans JP", sans-serif;
+  color: #666;
 }
 
-nav.main-nav {
-  min-height: 60px;
-  background-color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 80px;
+.text-muted {
+  color: #888;
 }
 
-nav .menu {
-  display: none;
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .main-nav {
+    flex-wrap: wrap;
+  }
+
+  .main-nav .links ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .banner img {
+    max-height: 300px;
+  }
+
+  #tentangkami .card {
+    margin-bottom: 20px;
+  }
 }
 
-nav .brand h1 {
-  color: #434343;
-  font-size: 26px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  margin-bottom: 0;
-}
 
-nav .brand a {
-  text-decoration: none;
-}
 
-nav .links {
-  width: 30%;
-  margin-left: auto;
-}
+    .icon-for-user a {
+      color: #f8f9fa;
+    }
 
-nav .links ul {
-  display: flex;
-  list-style-type: none;
-  align-items: center;
-  justify-content: space-around;
-  margin-bottom: 0;
-}
+    .icon-for-user a:hover {
+      color: #ffc107;
+    }
 
-nav .links ul li a {
-  text-decoration: none;
-  display: block;
-  color: #696868;
-  font-family: "Josefin Sans", sans-serif;
-  letter-spacing: 0.4px;
-}
+    main {
+      margin-top: 50px;
+  }
 
-nav .icon-for-user a {
-  display: inline-block;
-  text-decoration: none;
-}
+  .hero {
+      background-color: #007bff;
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+      border-radius: 10px;
+      margin-bottom: 50px;
+  }
 
-nav img {
-  height: 29px;
-}
+  .hero h2 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+  }
 
-/* banner */
-section.banner {
-  background-color: blanchedalmond;
-}
+  .hero p {
+      font-size: 1.2rem;
+      margin-top: 15px;
+  }
 
-.banner-text p {
-  color: #6a6a6a;
-  font-size: 20px;
-  margin-bottom: 0.5rem;
-}
+  .karier-section {
+      padding: 30px 0;
+      background-color: #f1f1f1;
+  }
 
-.banner-text h1 {
-  letter-spacing: 1px;
-  font-weight: 600;
-  font-size: 3.625rem;
-}
+  .karier-section h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 25px;
+      color: #007bff;
+  }
 
-.banner-text a {
-  display: inline-block;
-  background-color: #1c4759;
-  height: 45px;
-  width: 155px;
-  color: #efefef;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  padding: 13px 0;
-  letter-spacing: 1.2px;
-  text-decoration: none;
-}
+  .karier-section p {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 40px;
+  }
 
-/* new arrivals */
-.new-produkbaru {
-  margin-bottom: 50px;
-}
-.produkbaru-images {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  .karier-item {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
 
-.produkbaru-images img {
-  border-radius: 10px;
-  width: 300px;
-  height: auto;
-}
+  .karier-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
 
-.text-produkbaru {
-  padding: 20px 0 20px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  .karier-item h4 {
+      font-size: 1.75rem;
+      font-weight: bold;
+      color: #007bff;
+      margin-bottom: 15px;
+  }
 
-.text-produkbaru .title h3 {
-  font-weight: 600;
-  letter-spacing: 2px;
-  font-size: 30px;
-  color: #3a3a3a;
-}
+  .karier-item p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 15px;
+  }
 
-.text-produkbaru .text-show-all a {
-  display: inline-block;
-  text-decoration: none;
-  color: rgba(58, 58, 58, 50%);
-  font-size: 1px;
-}
+  .karier-item a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+  }
 
-/* products */
+  .karier-item a:hover {
+      background-color: #0056b3;
+  }
 
-.products-section {
-  background: linear-gradient(180deg, rgba(53, 133, 166, 0.5) 0%, rgba(28, 71, 89, 0.25) 100%);
-  min-height: 573px;
-  padding: 40px 0 40px 0;
-}
+  .why-join-section {
+      background-color: #fff;
+      padding: 50px 20px;
+      margin-bottom: 50px;
+  }
 
-.text-products .text-show-all a {
-  text-decoration: none;
-  color: rgba(255, 255, 255, 76%);
-  font-size: 19px;
-}
+  .why-join-section h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      color: #007bff;
+      margin-bottom: 30px;
+  }
 
-.text-products {
-  padding: 0px 0 40px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  .why-join-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
 
-.thumbnail {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-}
+  .why-join-text {
+      width: 60%;
+  }
 
-.thumbnail img {
-  width: 100%;
-  height: auto;
-}
+  .why-join-text h4 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #007bff;
+      margin-bottom: 10px;
+  }
 
-.caption {
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 76%);
-  border-radius: 0 0 10px 10px;
-  text-align: left;
-}
+  .why-join-text p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 10px;
+  }
 
-.caption h4 {
-  margin-bottom: 20px;
-  font-size: 17px;
-}
+  .why-join-image {
+      width: 30%;
+  }
 
-.caption h3 {
-  font-size: 20px;
-}
+  .why-join-image img {
+      width: 100%;
+      border-radius: 10px;
+  }
+  /* Make the card titles bold, larger, and blue */
+  .card-title {
+      font-weight: bold;
+      font-size: 1.25rem; /* Adjust size as needed */
+      color: #007bff; /* Blue color */
+  }
 
-.tombol {
-  margin-top: 10px;
-}
+  /* Ensure the .btn-primary button is blue */
+  .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+      color: white;
+  }
 
-.row .btn {
-  border-radius: 19px;
-  font-size: 18px;
-  padding: 10px 78px;
-}
-
-.tombol-keranjang .btn {
-  border-radius: 7px;
-  font-size: 18px;
-  padding: 10px 110px;
-}
-
-/* Tentang kami */
-
-.tentangkami {
-  margin-bottom: 60px;
-}
-
-.text-tentangkami {
-  padding: 60px 0 20px 0;
-  text-align: center;
-}
-
-.deskripsi {
-  text-align: center;
-}
-
-.text-second {
-  font-size: 15px;
-}
-
-/* FOOTER */
-
-footer {
-  border: top;
-  background-color: blanchedalmond;
-  padding: 90px 0 20px 0;
-}
-
-.footer-item a {
-  text-decoration: none;
-  color: #000000;
-}
-
-.footer-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-/* Login */
-
-.login {
-  margin: 130px;
-}
-
-.text-login h2 {
-  text-align: center;
-  font-size: 50px;
-  margin-bottom: 40px;
-}
-
-.button-wrapper .btn {
-  margin-right: 15px;
-  width: 120px; /* Lebar tombol */
-}
-
-.form {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
-
-/* Register */
-
-.register {
-  margin: 100px;
-}
-
-.text-register h2 {
-  text-align: center;
-  font-size: 50px;
-  margin-bottom: 40px;
-}
-
-/* active navbar */
-.active a {
-  color: black !important;
-}
-
-.produk {
-  flex: 25%;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-/* Keranjang */
-
-.keranjang {
-  margin: 50px;
-}
-
-.text-keranjang h2 {
-  text-align: center;
-  font-size: 50px;
-  margin-bottom: 40px;
-}
-
-.button-keranjang .btn {
-  width: 130px; /* Lebar tombol */
-}
-
-/* Produk Kami */
-.text-produk-kami h2 {
-  text-align: center;
-  font-size: 50px;
-  margin-bottom: 40px;
-  margin-top: 60px;
-}
-
-/* Admin-Data */
-
-.text-prod h2 {
-  text-align: center;
-  font-size: 50px;
-  margin-bottom: 70px;
-  margin-top: 40px;
-}
-
-.tam-prod {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #004085;
+  }
