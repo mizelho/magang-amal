@@ -1,103 +1,61 @@
 <?php
+include 'koneksi/koneksi.php'; 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = htmlspecialchars($_POST['name']);
-    $email = htmlspecialchars($_POST['email']);
-    $job = htmlspecialchars($_POST['job']);
-    $cv = $_FILES['cv'];
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $job = mysqli_real_escape_string($conn, $_POST['job']);
+    $experience = mysqli_real_escape_string($conn, $_POST['experience']);
+    $motivation = mysqli_real_escape_string($conn, $_POST['motivation']);
+    
+    if (isset($_FILES['cv'])) {
+        $cv_name = $_FILES['cv']['name'];
+        $cv_tmp_name = $_FILES['cv']['tmp_name'];
+        $cv_error = $_FILES['cv']['error'];
+        $cv_size = $_FILES['cv']['size'];
+        
+        if ($cv_error === 0) {
+            $allowed_ext = ['pdf', 'docx'];
+            $cv_ext = pathinfo($cv_name, PATHINFO_EXTENSION);
+            
+            if (in_array($cv_ext, $allowed_ext)) {
+                $upload_dir = 'uploads/cvs/';
+                if (!is_dir($upload_dir)) {
+                    mkdir($upload_dir, 0777, true); 
+                }
 
-    // Validasi email
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo '<p class="text-danger">Email tidak valid.</p>';
-        exit;
-    }
-
-    // Direktori penyimpanan file CV
-    $uploadDir = 'uploads/';
-    if (!is_dir($uploadDir)) {
-        mkdir($uploadDir, 0777, true);
-    }
-
-    $uploadFile = $uploadDir . basename($cv['name']);
-
-    // Validasi file
-    $allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-    $fileType = $cv['type'];
-
-    if (!in_array($fileType, $allowedTypes)) {
-        echo '<p class="text-danger">Hanya file PDF atau Word yang diperbolehkan.</p>';
-        exit;
-    }
-
-    $maxFileSize = 2 * 1024 * 1024; // 2MB
-    if ($cv['size'] > $maxFileSize) {
-        echo '<p class="text-danger">Ukuran file terlalu besar. Maksimum 2MB.</p>';
-        exit;
-    }
-
-    if ($cv['error'] != UPLOAD_ERR_OK) {
-        echo '<p class="text-danger">Terjadi kesalahan saat mengunggah file.</p>';
-        exit;
-    }
-
-    ?>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-        <title>Status Lamaran</title>
-        <style>
-            body {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                min-height: 100vh;
-                background-color: #f8f9fa;
-                margin: 0;
-            }
-            .card {
-                max-width: 500px;
-                margin: 20px;
-            }
-            .card h1 {
-                font-size: 1.75rem;
-            }
-            .btn-back {
-                text-decoration: none;
-                font-size: 14px;
-                color: #6c757d;
-            }
-            .btn-back:hover {
-                color: #343a40;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="card shadow p-4">
-            <?php
-            if (move_uploaded_file($cv['tmp_name'], $uploadFile)) {
-                ?>
-                <div class="text-center">
-                    <h1 class="text-success">Lamaran Berhasil Dikirim</h1>
-                    <p>Terima kasih, <strong><?php echo $name; ?></strong>. Lamaran Anda untuk posisi <strong><?php echo $job; ?></strong> telah kami terima.</p>
-                    <p>Kami akan menghubungi Anda melalui email di <strong><?php echo $email; ?></strong>.</p>
-                    <a href="index.php" class="btn btn-primary mt-3">Kembali ke Halaman Utama</a>
-                </div>
-                <?php
+                $cv_path = $upload_dir . time() . '_' . $cv_name;
+                
+                if (move_uploaded_file($cv_tmp_name, $cv_path)) {
+                    $sql = "INSERT INTO lamaran (name, email, job, experience, motivation, cv_path) 
+                            VALUES ('$name', '$email', '$job', '$experience', '$motivation', '$cv_path')";
+                    
+                    if (mysqli_query($conn, $sql)) {
+                        echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
+                        echo '<script>
+                                window.onload = function() {
+                                    Swal.fire({
+                                        title: "Application Submitted!",
+                                        text: "Your application has been successfully submitted.",
+                                        icon: "success",
+                                        confirmButtonText: "OK"
+                                    }).then(function() {
+                                        window.location.href = "http://localhost/magang-amal/index.php";
+                                    });
+                                }
+                              </script>';
+                    } else {
+                        echo "Error: " . mysqli_error($conn);
+                    }
+                } else {
+                    echo "Failed to upload CV.";
+                }
             } else {
-                ?>
-                <div class="text-center">
-                    <h1 class="text-danger">Gagal Mengunggah CV</h1>
-                    <p>Mohon maaf, terjadi kesalahan saat mengunggah CV Anda. Silakan coba lagi.</p>
-                    <a href="lamar.php?job=<?php echo urlencode($job); ?>" class="btn btn-warning mt-3">Kembali ke Form Lamaran</a>
-                </div>
-                <?php
+                echo "Invalid file type. Please upload a PDF or DOCX file.";
             }
-            ?>
-        </div>
-    </body>
-    </html>
-    <?php
+        } else {
+            echo "Error uploading file.";
+        }
+    }
 }
 ?>
